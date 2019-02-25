@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+//import UserIsLoggedIn from './components/UserIsLoggedIn/UserIsLoggedIn';
 
 class App extends Component {
+  state = {
+    isLoggedIn: false
+  }
+
+  loginToggler = () => {
+    this.setState((prevState) => {
+      return {
+        isLoggedIn: !prevState.isLoggedIn
+      }
+      
+    })
+    console.log(this.state.isLoggedIn)
+  }
+  
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        
+        {this.state.isLoggedIn ? <button onClick={this.loginToggler}>Logout</button> : <button onClick={this.loginToggler}>Login</button> }
       </div>
     );
   }
